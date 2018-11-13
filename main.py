@@ -244,7 +244,7 @@ class CycleGAN():
         self.loss_calc()
       
         # Initializing the global variables
-        init = init = ([tf.global_variables_initializer(), tf.local_variables_initializer()])
+        init = ([tf.global_variables_initializer(), tf.local_variables_initializer()])
         saver = tf.train.Saver()     
 
         with tf.Session() as sess:
