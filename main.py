@@ -96,12 +96,12 @@ class CycleGAN():
 
         for i in range(max_images): 
             image_tensor = sess.run(self.image_A)
-            if(image_tensor.size() == img_size*batch_size*img_layer):
+            if(image_tensor.size == img_size*batch_size*img_layer):
                 self.A_input[i] = image_tensor.reshape((batch_size,img_height, img_width, img_layer))
 
         for i in range(max_images):
             image_tensor = sess.run(self.image_B)
-            if(image_tensor.size() == img_size*batch_size*img_layer):
+            if(image_tensor.size == img_size*batch_size*img_layer):
                 self.B_input[i] = image_tensor.reshape((batch_size,img_height, img_width, img_layer))
 
 
@@ -244,7 +244,7 @@ class CycleGAN():
         self.loss_calc()
       
         # Initializing the global variables
-        init = tf.global_variables_initializer()
+        init = init = ([tf.global_variables_initializer(), tf.local_variables_initializer()])
         saver = tf.train.Saver()     
 
         with tf.Session() as sess:
